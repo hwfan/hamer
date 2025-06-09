@@ -117,7 +117,7 @@ def start_detection(queue_1: multiprocessing.Queue, args, queue_2: multiprocessi
 
     prev_keypoints = None
     ts = None
-    with torch.no_grad():
+    with torch.no_grad(), torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
         while True:
             img_cv2, wrist_trans, count, boxes, right = queue_1.get()
             if img_cv2 is None:
