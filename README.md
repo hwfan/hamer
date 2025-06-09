@@ -23,32 +23,22 @@ Then, you can install the rest of the dependencies. This is for CUDA 11.8, but y
 ```bash
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 pip install -e .[all]
+pip install pyrealsense2 cvzone mediapipe rospkg
 ```
 
 ``` bash
-cd third-party
-git clone https://github.com/ViTAE-Transformer/ViTPose.git
 pip install -v -e third-party/ViTPose
+pip install -v -e third-party/pytorch3d
 ```
 
 Besides these files, you also need to download the MANO model. Please visit the [MANO website](https://mano.is.tue.mpg.de) and register to get access to the downloads section.  We only require the right hand model. You need to put `MANO_RIGHT.pkl` under the `_DATA/data/mano` folder.
 
-```bash
-pip install pyrealsense2
-pip install cvzone
-pip install mediapipe
-pip install rospkg
-cd third-party
-git clone https://github.com/facebookresearch/pytorch3d.git
-cd pytorch3d && pip install -e .
-
-echo 'source /opt/ros/noetic/setup.sh' >> ~/.bashrc
-```
-
 ## Run
 
 ```bash
+source /opt/ros/noetic/setup.bash
 roscore
+python kill_all.py
 python move_gripper.py
 ```
 

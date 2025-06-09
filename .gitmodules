@@ -2,3 +2,6 @@
 	path = third-party/ViTPose
 	url = https://github.com/ViTAE-Transformer/ViTPose.git
 	branch = main
+[submodule "third-party/pytorch3d"]
+	path = third-party/pytorch3d
+	url = https://github.com/facebookresearch/pytorch3d.git
